@@ -31,3 +31,55 @@
 	
 	Cool? Now get to hackin!
 */
+
+body.custom { font: 62.5% Arial,Helvetica,sans-serif; }
+
+/*---:[ headlines ]:---*/
+
+.custom h2 a:visited { color: #000; text-decoration: none; }
+
+.custom h3 { font-size: 1.1em; text-transform: uppercase; }
+
+        .custom .entry h3 { margin: 1.5em 0 0.5em 0; clear: both; }
+
+/*---:[ content styles ]:---*/
+
+.custom .entry, .custom .comment .reply { font-size: 1.3em; }
+
+/*---:[ vimeo ]:---*/
+
+.vimeo {
+	text-align: center;
+}
+
+/*---:[ table styling ]:---*/
+
+.custom .entry table {
+  border-left: 1px solid #333;
+  border-top: 1px solid #333;
+  margin: 0 0 1em;
+}
+
+.custom .entry table th, .entry table td {
+  border-bottom: 1px solid #333;
+  border-right: 1px solid #333;
+  padding: 4px;
+}
+
+.custom .entry table td {
+  font-size: 0.9em;
+}
+
+/*---:[ content styles ]:---*/
+
+.custom .entry p { margin: 0 0 1em 0; }
+
+        .custom .entry p strong { color: #444; }
+
+.custom .entry pre { background-color: #f0f0f0; border: 1px dotted #a0a0a0; color: #0000bb; font-size: 0.9em; font-family: Courier, monospace; line-height: 1.4em; margin: 0 0 1em; padding: 5px; }
+
+/*---:[ image styles ]:---*/
+
+.custom .entry img, .entry .gallery img { border: 0px; }
+
+.custom .entry img.center, .entry img.aligncenter { padding: 0px; }
