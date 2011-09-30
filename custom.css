@@ -78,6 +78,14 @@ body.custom { font: 62.5% Arial,Helvetica,sans-serif; }
 
 .custom .entry pre { background-color: #f0f0f0; border: 1px dotted #a0a0a0; color: #0000bb; font-size: 0.9em; font-family: Courier, monospace; line-height: 1.4em; margin: 0 0 1em; padding: 5px; }
 
+.custom .archives .entry ul { list-style: none outside none; margin: 0 0 1.5em 0; }
+
+        .custom .archives .entry ul li { margin: 0; padding: 5px 0; border-bottom: 1px solid #EEEEEE; }
+
+                .custom .archives .entry ul a { text-decoration: none; }
+                
+                .custom .archives .entry ul li span { float: right; color: #888888; }
+
 /*---:[ image styles ]:---*/
 
 .custom .entry img, .entry .gallery img { border: 0px; }

@@ -4,7 +4,7 @@
 			<h2>Search It!</h2>
 			<?php include (TEMPLATEPATH . '/searchform.php'); ?>
 		</li>
-		<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar()) : ?>
+		<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar-2')) : ?>
 		<li class="widget">
 			<h2>Recent Entries</h2>
 			<ul>

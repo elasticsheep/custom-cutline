@@ -2,8 +2,19 @@
 /* blast you red baron! */
 require_once (ABSPATH . WPINC . '/class-snoopy.php');
 
-if ( function_exists('register_sidebar') )
-    register_sidebar();
+if ( function_exists('register_sidebar') ) {
+	/* Default sidebase */
+	register_sidebar( array(
+		'name' => __( 'Main Sidebar', 'custom-cutline' ),
+		'id' => 'sidebar-1',
+	) );
+
+	/* Declare a distinct main sidebar for the archive page */
+	register_sidebar( array(
+		'name' => __( 'Archives Main Sidebar', 'custom-cutline' ),
+		'id' => 'sidebar-2',
+	) );
+}
 
 $current = 'r167';
 function k2info($show='') {
@@ -268,4 +279,59 @@ function menu() {
 	<p style="text-align: center;">Get help with Cutline at <a href="http://cutline.tubetorial.com">the Cutline support site</a>.</p>
 </div>
 
-<?php } // this ends the admin page ?>
+<?php } // this ends the admin page 
+
+
+function custom_get_archives() {
+	global $wpdb, $wp_locale;
+
+	// this is what will separate dates on weekly archive links
+	$archive_week_separator = '&#8211;';
+
+	// over-ride general date format ? 0 = no: use the date format set in Options, 1 = yes: over-ride
+	$archive_date_format_over_ride = 0;
+
+	// options for daily archive (only if you over-ride the general date format)
+	$archive_day_date_format = 'Y/m/d';
+
+	if ( !$archive_date_format_over_ride ) {
+		$archive_day_date_format = get_option('date_format');
+	}
+
+	//filters
+	$where = apply_filters( 'getarchives_where', "WHERE post_type = 'post' AND post_status = 'publish'", $r );
+	$join = apply_filters( 'getarchives_join', '', $r );
+
+	$output = '';
+
+	$orderby = 'post_date DESC ';
+	$query = "SELECT * FROM $wpdb->posts $join $where ORDER BY $orderby $limit";
+	$key = md5($query);
+	$cache = wp_cache_get( 'custom_get_archives' , 'general');
+	if ( !isset( $cache[ $key ] ) ) {
+		$arcresults = $wpdb->get_results($query);
+		$cache[ $key ] = $arcresults;
+		wp_cache_set( 'custom_get_archives', $cache, 'general' );
+	} else {
+		$arcresults = $cache[ $key ];
+	}
+	if ( $arcresults ) {
+		foreach ( (array) $arcresults as $arcresult ) {
+			if ( $arcresult->post_date != '0000-00-00 00:00:00' ) {
+				$url  = get_permalink($arcresult);
+				$arc_title = $arcresult->post_title;
+				$arc_date = date($archive_day_date_format, strtotime($arcresult->post_date));
+				$before = "<span>" . $arc_date . "</span>";
+				if ( $arc_title )
+					$text = strip_tags(apply_filters('the_title', $arc_title));
+				else
+					$text = $arcresult->ID;
+				$output .= get_archives_link($url, $text, 'html', $before, $after);
+			}
+		}
+	}
+
+	echo $output;
+}
+
+?>
