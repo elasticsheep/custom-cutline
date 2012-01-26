@@ -1,6 +1,13 @@
 <div id="sidebar">
 	<ul class="sidebar_list">
 		<li class="widget">
+			<div class="banner">
+					<a href="<?php bloginfo('url'); ?>/shop">
+						<img src="<?php bloginfo('template_url'); ?>/images/shop_sidebar.jpg" width="230px" height="126px"></img>
+					</a>
+			</div>
+		</li>
+		<li class="widget">
 			<h2>Search It!</h2>
 			<?php include (TEMPLATEPATH . '/searchform.php'); ?>
 		</li>

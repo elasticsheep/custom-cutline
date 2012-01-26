@@ -91,3 +91,7 @@ body.custom { font: 62.5% Arial,Helvetica,sans-serif; }
 .custom .entry img, .entry .gallery img { border: 0px; }
 
 .custom .entry img.center, .entry img.aligncenter { padding: 0px; }
+
+/*---:[ sidebar banner ]:---*/
+
+.custom li.widget div.banner { border-top: 3px solid #000; }
